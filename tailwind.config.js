@@ -21,8 +21,8 @@ module.exports = {
         "mobile-dark": "url('/src/assets/bg-mobile-dark.jpg')",
         "desktop-light": "url('/src/assets/bg-desktop-light.jpg')",
         "desktop-dark": "url('/src/assets/bg-desktop-dark.jpg')",
-        check:
-          "url('/src/assets/icon-check.svg'), linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))",
+        rainbow:
+          "linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))",
       },
     },
   },

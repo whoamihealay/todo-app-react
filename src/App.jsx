@@ -6,7 +6,7 @@ import Todos from "./components/Todos";
 
 function App() {
   return (
-    <div className="px-4 mx-auto max-w-7xl">
+    <div className="px-4 mx-auto max-w-2xl min-w-[300px]">
       <div className="bg-gray-200 dark:bg-slate-900 absolute inset-0 -z-50" />
       <Header />
       <main className="">

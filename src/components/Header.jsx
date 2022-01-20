@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <header className="flex justify-between py-8 ">
-      <div className="bg-mobile-light dark:bg-mobile-dark absolute inset-0 bg-no-repeat bg-cover w-full h-52 -z-40"></div>
+      <div className="bg-mobile-light dark:bg-mobile-dark sm:bg-desktop-light sm:dark:bg-desktop-dark absolute inset-0 bg-no-repeat bg-cover w-full h-52 -z-40 max-w-7xl mx-auto xl:rounded-b-lg"></div>
       <h1 className="text-white font-bold uppercase text-xl tracking-[0.4em]">
         Todo
       </h1>
