@@ -1,57 +1,117 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { client } from "../../api/client";
+import { StatusFilters } from "../filters/filtersSlice";
+
+const initialState = {
+  status: "idle", // Idle or Loading
+  entities: {},
+};
 
 export const todoSlice = createSlice({
   name: "todos",
-  initialState: {
-    todos: [],
-    filter: { all: true, active: false, completed: false },
-  },
+  initialState,
   reducers: {
-    addTodo: (state, action) => {
-      state.todos.push(action.payload);
+    todoAdded(state, action) {
+      const todo = action.payload;
+      state.entities[todo.id] = todo;
     },
-    deleteTodo: (state, action) => {
-      state.todos = state.todos.filter((item) => item !== action.payload);
+    todoDeleted(state, action) {
+      delete state.entities[action.payload];
     },
-    switchTodo: (state, action) => {
-      let from = action.payload.from;
-      let to = action.payload.to;
-      [state.todos[from], state.todos[to]] = [
-        state.todos[to],
-        state.todos[from],
-      ];
+    todoToggled(state, action) {
+      const todoId = action.payload;
+      const todo = state.entities[todoId];
+      todo.completed = !todo.completed;
     },
-    setAll: (state) => {
-      state.filter = {
-        all: true,
-        active: false,
-        completed: false,
-      };
+    todosCompleted(state, action) {
+      Object.values(state.entities).forEach((todo) => {
+        todo.completed = true;
+      });
     },
-    setActive: (state) => {
-      state.filter = {
-        all: false,
-        active: true,
-        completed: false,
-      };
+    todosClearCompleted(state, action) {
+      Object.values(state.entities).forEach((todo) => {
+        if (todo.completed) {
+          delete state.entities[todo.id];
+        }
+      });
     },
-    setCompleted: (state) => {
-      state.filter = {
-        all: false,
-        active: false,
-        completed: true,
-      };
+    todosLoading(state, action) {
+      state.status = "loading";
+    },
+    todosLoaded(state, action) {
+      const newEntities = {};
+      action.payload.forEach((todo) => {
+        newEntities[todo.id] = todo;
+      });
+      state.entities = newEntities;
+      state.status = "idle";
     },
   },
 });
 
 export const {
-  addTodo,
-  deleteTodo,
-  switchTodo,
-  setAll,
-  setActive,
-  setCompleted,
+  todoAdded,
+  todoDeleted,
+  todoToggled,
+  todosCompleted,
+  todosClearCompleted,
+  todosLoading,
+  todosLoaded,
 } = todoSlice.actions;
 
 export default todoSlice.reducer;
+
+// Thunks
+export const fetchTodos = () => async (dispatch) => {
+  dispatch(todosLoading());
+  const response = await client.get("/veryRealApi/todos");
+  dispatch(todosLoaded(response.todos));
+};
+
+export function saveNewTodo(text) {
+  return async function saveNewTodoThunk(dispatch) {
+    const initialTodo = { text };
+    const response = await client.post("/veryRealApi/todos", {
+      todo: initialTodo,
+    });
+    dispatch(todoAdded(response.todo));
+  };
+}
+
+const selectTodoEntities = (state) => state.todos.entities;
+
+export const selectTodos = createSelector(selectTodoEntities, (entities) =>
+  Object.values(entities)
+);
+
+export const selectTodoById = (state, todoId) => {
+  return selectTodoEntities(state)[todoId];
+};
+
+export const selectTodoIds = createSelector(selectTodos, (todos) =>
+  todos.map((todo) => todo.id)
+);
+
+export const selectFilteredTodos = createSelector(
+  selectTodos,
+  (state) => state.filters,
+  (todos, filters) => {
+    const { status } = filters;
+    const showAllCompletions = status === StatusFilters.All;
+    if (showAllCompletions) {
+      return todos;
+    }
+    const completedStatus = status === StatusFilters.Completed;
+
+    return todos.filter((todo) => {
+      const statusMatches =
+        showAllCompletions || todo.completed === completedStatus;
+      return statusMatches;
+    });
+  }
+);
+
+export const selectFilteredTodoIds = createSelector(
+  selectFilteredTodos,
+  (filteredTodos) => filteredTodos.map((todo) => todo.id)
+);

@@ -1,8 +1,8 @@
-import Filter from "./components/Filter";
+import Filter from "./features/filters/Filter";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import TodoInput from "./components/TodoInput";
-import Todos from "./components/Todos";
+import TodoInput from "./features/todos/TodoInput";
+import TodoList from "./features/todos/TodoList";
 
 function App() {
   return (
@@ -12,8 +12,10 @@ function App() {
       <main className="">
         <div className="flex flex-col gap-4">
           <TodoInput />
-          <Todos />
-          <Filter />
+          <TodoList />
+          <div className="sm:hidden flex justify-center gap-4 text-slate-500 dark:text-gray-600 bg-white dark:bg-slate-800 px-4 py-3 rounded-lg">
+            <Filter />
+          </div>
         </div>
         <div className="py-8 text-gray-500 text-center">
           Drag and drop to reorder list
