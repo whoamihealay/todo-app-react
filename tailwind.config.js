@@ -24,6 +24,9 @@ module.exports = {
         rainbow:
           "linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%))",
       },
+      screens: {
+        mm: { max: "639px" },
+      },
     },
   },
   plugins: [
