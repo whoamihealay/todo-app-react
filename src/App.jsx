@@ -17,9 +17,9 @@ function App() {
             <Filter />
           </div>
         </div>
-        <div className="py-8 text-gray-500 text-center">
+        {/* TODO: <div className="py-8 text-gray-500 text-center">
           Drag and drop to reorder list
-        </div>
+        </div> */}
       </main>
       <Footer />
     </div>
