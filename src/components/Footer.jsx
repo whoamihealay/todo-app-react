@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 const Footer = () => {
   return (
     <footer className="text-xs text-center absolute left-0 right-0 bottom-1 dark:text-white">
-      Challenge by{" "}
+      Challenge by{' '}
       <a
         className="text-blue-500"
         href="https://www.frontendmentor.io?ref=challenge"
@@ -12,7 +12,7 @@ const Footer = () => {
       >
         Frontend Mentor
       </a>
-      . Coded by{" "}
+      . Coded by{' '}
       <a
         href="https://www.frontendmentor.io/profile/whoamihealay"
         target="_blank"
@@ -22,7 +22,7 @@ const Footer = () => {
       </a>
       .
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

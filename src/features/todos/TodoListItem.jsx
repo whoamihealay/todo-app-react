@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { todoDeleted, todoToggled, selectTodoById } from "./todoSlice";
+import { todoDeleted, todoToggled, selectTodoById } from './todoSlice'
 
 const TodoListItem = ({ id }) => {
-  const todo = useSelector((state) => selectTodoById(state, id));
-  const { text, completed } = todo;
-  const dispatch = useDispatch();
-  const [todoStyle, setTodoStyled] = useState(null);
+  const todo = useSelector((state) => selectTodoById(state, id))
+  const { text, completed } = todo
+  const dispatch = useDispatch()
+  const [todoStyle, setTodoStyled] = useState(null)
 
   // Toggle todo completeness status
   const handleCompletedChanged = () => {
-    dispatch(todoToggled(todo.id));
-  };
+    dispatch(todoToggled(todo.id))
+  }
 
   // Delete todo
   const onDelete = () => {
-    dispatch(todoDeleted(todo.id));
-  };
+    dispatch(todoDeleted(todo.id))
+  }
 
   useEffect(() => {
     if (completed) {
-      setTodoStyled("line-through");
+      setTodoStyled('line-through')
     } else {
-      setTodoStyled(null);
+      setTodoStyled(null)
     }
-  }, [completed]);
+  }, [completed])
 
   return (
     <li className="bg-white dark:bg-slate-800 rounded-lg">
@@ -39,21 +39,15 @@ const TodoListItem = ({ id }) => {
               onChange={handleCompletedChanged}
             />
           </div>
-          <p className={`text-slate-800 dark:text-gray-300 ${todoStyle}`}>
-            {text}
-          </p>
+          <p className={`text-slate-800 dark:text-gray-300 ${todoStyle}`}>{text}</p>
         </div>
         <button onClick={onDelete}>
-          <img
-            className="h-4 w-4"
-            src="./static/media/icon-cross.svg"
-            alt="X"
-          />
+          <img className="h-4 w-4" src="./static/media/icon-cross.svg" alt="X" />
         </button>
       </div>
       <hr className="dark:opacity-10" />
     </li>
-  );
-};
+  )
+}
 
-export default TodoListItem;
+export default TodoListItem
