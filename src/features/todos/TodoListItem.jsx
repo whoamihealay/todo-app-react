@@ -44,7 +44,11 @@ const TodoListItem = ({ id }) => {
           </p>
         </div>
         <button onClick={onDelete}>
-          <img className="h-4 w-4" src="/images/icon-cross.svg" alt="X" />
+          <img
+            className="h-4 w-4"
+            src="./static/media/icon-cross.svg"
+            alt="X"
+          />
         </button>
       </div>
       <hr className="dark:opacity-10" />

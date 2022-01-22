@@ -36,7 +36,7 @@ const Header = () => {
           <button onClick={() => setDarkMode(false)}>
             <img
               className="h-5 w-5"
-              src="/images/icon-sun.svg"
+              src="./static/media/icon-sun.svg"
               alt="Dark mode"
             />
           </button>
@@ -44,7 +44,7 @@ const Header = () => {
           <button onClick={() => setDarkMode(true)}>
             <img
               className="h-5 w-5"
-              src="/images/icon-moon.svg"
+              src="./static/media/icon-moon.svg"
               alt="Light mode"
             />
           </button>
