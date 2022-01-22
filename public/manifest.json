@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Todo App",
+  "name": "Todo App React",
   "icons": [
     {
       "src": "favicon.png",
@@ -8,19 +8,19 @@
       "type": "image/x-icon"
     },
     {
-      "src": "images/icon-check.svg",
+      "src": "static/media/icon-check.svg",
       "sizes": "any"
     },
     {
-      "src": "images/icon-moon.svg",
+      "src": "static/media/icon-moon.svg",
       "sizes": "any"
     },
     {
-      "src": "images/icon-sun.svg",
+      "src": "static/media/icon-sun.svg",
       "sizes": "any"
     },
     {
-      "src": "images/icon-cross.svg",
+      "src": "static/media/icon-cross.svg",
       "sizes": "any"
     }
   ],

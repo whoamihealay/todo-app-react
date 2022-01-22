@@ -1,6 +1,7 @@
 {
   "name": "todo-app-react",
   "version": "0.1.0",
+  "homepage": "https://whoamihealay.github.io/todo-app-react/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",

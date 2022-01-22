@@ -34,11 +34,19 @@ const Header = () => {
       <div className="">
         {darkMode ? (
           <button onClick={() => setDarkMode(false)}>
-            <img className="h-5 w-5" src="/images/icon-sun.svg" alt="sun" />
+            <img
+              className="h-5 w-5"
+              src="/images/icon-sun.svg"
+              alt="Dark mode"
+            />
           </button>
         ) : (
           <button onClick={() => setDarkMode(true)}>
-            <img className="h-5 w-5" src="/images/icon-moon.svg" alt="moon" />
+            <img
+              className="h-5 w-5"
+              src="/images/icon-moon.svg"
+              alt="Light mode"
+            />
           </button>
         )}
       </div>
