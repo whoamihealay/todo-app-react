@@ -9,8 +9,10 @@ const TodoInput = () => {
   const dispatch = useDispatch();
   const inputRef = useRef();
 
-  const handleOnChange = (e) => setText(e.target.value);
-
+  // When enter/return is pressed by the user,
+  // trim the text, set status to loading and
+  // dispatch redux to add the todo to the state.
+  // Finally, reset input variables.
   const handleKeyDown = async (e) => {
     const trimmedText = text.trim();
     if (e.which === 13 && trimmedText) {
@@ -25,9 +27,11 @@ const TodoInput = () => {
   let placeholder = isLoading ? "" : "Create a new Todo...";
   let loader = isLoading ? <div>Adding...</div> : null;
 
+  // Focuses on the input box on page load
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+
   return (
     <div
       className={
@@ -41,7 +45,7 @@ const TodoInput = () => {
         ref={inputRef}
         placeholder={placeholder}
         value={text}
-        onChange={handleOnChange}
+        onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyDown}
         disabled={isLoading}
       />

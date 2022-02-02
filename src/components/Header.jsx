@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
 
+  // If localstorage has a theme value of dark
+  // or the user has set a dark theme preference
+  // Set the theme to dark
   useEffect(() => {
     if (
       localStorage.theme === "dark" ||
@@ -14,6 +17,9 @@ const Header = () => {
     }
   }, []);
 
+  // When the theme mode button is toggled,
+  // update localstorage and ajust the document class
+  // The class "dark" is used by tailwindcss to change variables.
   useEffect(() => {
     if (darkMode) {
       localStorage.theme = "dark";
