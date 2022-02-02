@@ -11,10 +11,8 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -30,16 +28,15 @@ Users should be able to:
 - Filter by all/active/complete todos
 - Clear all completed todos
 - Toggle light and dark mode
-- **Bonus**: Drag and drop to reorder items on the list
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](./screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [frontendmentor.io](https://www.frontendmentor.io/solutions/todo-app-using-react-and-redux-dyXO0R4NM)
+- Live Site URL: [whoamihealay.github.io/todo-app-react/](https://whoamihealay.github.io/todo-app-react/)
 
 ## My process
 
@@ -49,15 +46,32 @@ Users should be able to:
 - TailwindCSS
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
+- Redux
 - Webpack 5
 
 ### What I learned
 
-### Continued development
+I re-learned Redux. I unsuccessfully used Redux in another project and used the Context API instead. This time I wanted to use Redux and, what better than a todo app for state management.
+
+```
+  let isLoading = status === "loading";
+  let placeholder = isLoading ? "" : "Create a new Todo...";
+  let loader = isLoading ? <div>Adding...</div> : null;
+```
+
+Reading through the redux documentation, I discover the isBool syntax and will use it a lot more.
 
 ### Useful resources
 
+- [React Docs](https://reactjs.org/docs/getting-started.html)
+- [Redux Docs](https://redux.js.org/introduction/getting-started)
+- [Fireship.io](https://www.youtube.com/c/Fireship) - Awesome Youtube channel. Fireship.io has a "Concept/framework in 100sec" playlist to quickly learn the very basics of a Programming language, framework, or concept. There are also longer videos for more in-depth frontend mini-projects (CSS grid, flex...)
+- [Brad Taversy](https://www.youtube.com/c/TraversyMedia) - Awesome Youtube Channel and Udemy course on react and the Context library. I followed his React Crash Course and Udemy course on React.
+- [Kevin Powell](https://www.youtube.com/kepowob) - Discovered on FrontendMentor with the partnership on the Space challenge and where my CSS game step up to all new level.
+- [Google](google.com) - Last but not least, the ultimate bug solver!
+
 ## Author
 
+- Website - [whoamiandrew.com](https://whoamiandrew.com)
 - Frontend Mentor - [@whoamihealay](https://www.frontendmentor.io/profile/whoamihealay)
 - Linkedin - [@andrewsouthern01](https://www.linkedin.com/in/andrewsouthern01/)
