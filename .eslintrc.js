@@ -1,7 +1,11 @@
+/* eslint-disable no-undef */
 module.exports = {
   env: {
+    commonjs: true,
+    node: true,
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     "eslint:recommended",
@@ -18,7 +22,7 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
-    indent: ["error", 4],
+    indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "always"],

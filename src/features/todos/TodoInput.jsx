@@ -1,36 +1,38 @@
-import { useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect, useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 
-import { saveNewTodo } from './todoSlice'
+import { saveNewTodo } from "./todoSlice";
 
 const TodoInput = () => {
-  const [text, setText] = useState('')
-  const [status, setStatus] = useState('idle')
-  const dispatch = useDispatch()
-  const inputRef = useRef()
+  const [text, setText] = useState("");
+  const [status, setStatus] = useState("idle");
+  const dispatch = useDispatch();
+  const inputRef = useRef();
 
-  const handleOnChange = (e) => setText(e.target.value)
+  const handleOnChange = (e) => setText(e.target.value);
 
   const handleKeyDown = async (e) => {
-    const trimmedText = text.trim()
+    const trimmedText = text.trim();
     if (e.which === 13 && trimmedText) {
-      setStatus('loading')
-      await dispatch(saveNewTodo(trimmedText))
-      setText('')
-      setStatus('idle')
+      setStatus("loading");
+      await dispatch(saveNewTodo(trimmedText));
+      setText("");
+      setStatus("idle");
     }
-  }
+  };
 
-  let isLoading = status === 'loading'
-  let placeholder = isLoading ? '' : 'Create a new Todo...'
-  let loader = isLoading ? <div>Adding...</div> : null
+  let isLoading = status === "loading";
+  let placeholder = isLoading ? "" : "Create a new Todo...";
+  let loader = isLoading ? <div>Adding...</div> : null;
 
   useEffect(() => {
-    inputRef.current.focus()
-  }, [])
+    inputRef.current.focus();
+  }, []);
   return (
     <div
-      className={`rounded-lg overflow-hidden flex items-center bg-white dark:bg-slate-800 px-4 py-1 shadow-sm`}
+      className={
+        "rounded-lg overflow-hidden flex items-center bg-white dark:bg-slate-800 px-4 py-1 shadow-sm"
+      }
     >
       <i className="border-2 border-gray-500/30 border-solid rounded-full w-5 h-5"></i>
       <input
@@ -45,7 +47,7 @@ const TodoInput = () => {
       />
       {loader}
     </div>
-  )
-}
+  );
+};
 
-export default TodoInput
+export default TodoInput;

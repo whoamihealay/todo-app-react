@@ -1,9 +1,9 @@
-import React from "react";
 import { useDispatch } from "react-redux";
 import { statusFilterChanged, StatusFilters } from "./filtersSlice";
 import { useSelector } from "react-redux";
 
-export const StatusFilter = ({ value: status, onChange }) => {
+// eslint-disable-next-line react/prop-types
+export const StatusFilter = ({ status, onChange }) => {
   const renderedFilters = Object.keys(StatusFilters).map((key) => {
     const value = StatusFilters[key];
     const handleClick = () => onChange(value);

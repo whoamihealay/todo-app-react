@@ -19,7 +19,7 @@ const Header = () => {
       localStorage.theme = "dark";
       document.documentElement.classList.add("dark");
     }
-    if (darkMode === false) {
+    if (!darkMode) {
       localStorage.theme = "light";
       document.documentElement.classList.remove("dark");
     }
